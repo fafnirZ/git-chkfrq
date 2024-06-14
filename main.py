@@ -86,11 +86,19 @@ occurence_map = {}
 
 
 if __name__ == "__main__":
+
+  if len(sys.argv) != 3:
+    print("Usage: python3 -m git-chfrq {path_to_repo} {date_expr}")
+    exit(1)
+
   # get where user is executing the script
   execution_path = os.getcwd()
 
   # input path relative to the CWD the user is in when executing the script
   relative_path = sys.argv[1]
+
+  # get date expression
+  date_expression = sys.argv[2]
 
   # relative to the user's execution context
   path = os.path.join(execution_path, relative_path)
@@ -99,7 +107,7 @@ if __name__ == "__main__":
   repo = Repo(path)
   
   # fetches commits based off a parsable date_expression
-  commits = list(get_commits(repo, date_expr="12m"))
+  commits = list(get_commits(repo, date_expr=date_expression))
   if len(commits) < 1:
     raise ValueError("this repo does not have any commits")
   
