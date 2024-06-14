@@ -16,7 +16,16 @@ def main():
 
 
   if len(sys.argv) != 3:
-    print("Usage: python3 -m git-chfrq {path_to_repo} {date_expr}")
+    print("Usage: git-chkfrq {path_to_repo} {date_expr}")
+    example_str = (
+      "Example:\n"
+      " git-chkfrq ./ 9d\n"
+      " git-chkfrq ./ 1y\n\n"
+      "allowed date_expression regex: (-)?[0-9]+(d|m|y)\n"
+      "NOTE: it will always be a relative time from now to a point in the past\n"
+      "as you cannot compare with future commits that do not exist\n"
+    )
+    print(example_str)
     exit(1)
 
   # get where user is executing the script

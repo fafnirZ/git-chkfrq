@@ -10,7 +10,6 @@ setup(
     install_requires=[
         'GitPython',
         'python-dateutil',
-        'pathlib',
     ],
     entry_points={
         'console_scripts': [
